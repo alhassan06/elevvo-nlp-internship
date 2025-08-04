@@ -1,58 +1,85 @@
-# 🧠 NLP Internship Projects – Elevvo
+# 📰 Fake News Detection
 
-This repository contains the NLP tasks I completed during my Elevvo Internship. Each project tackles a different real-world NLP problem, using industry-relevant datasets and techniques in Python.
-
----
-
-## ✅ Completed Tasks
-
-### 1. Question Answering with Transformers
-- **Dataset:** SQuAD v1.1 (via HuggingFace)
-- **Objective:** Build a system that extracts answers to questions from a given context.
-- **Tools:** HuggingFace Transformers (`bert-large-uncased-whole-word-masking-finetuned-squad`)
-- **Evaluation:** Exact Match (EM), F1 Score
-
-### 2. Sentiment Analysis on Product Reviews
-- **Dataset:** IMDb Reviews / Amazon Product Reviews (Kaggle)
-- **Objective:** Determine if a product review is positive or negative.
-- **Preprocessing:** Lowercasing, stopword removal
-- **Vectorization:** TF-IDF
-- **Model:** Logistic Regression
-- **Evaluation:** Accuracy, Confusion Matrix
-
-### 3. News Category Classification
-- **Dataset:** News Category Dataset (e.g., HuffPost or Kaggle)
-- **Objective:** Predict the category of a news article (e.g., tech, business, politics).
-- **Model:** Multiclass Logistic Regression
-- **Evaluation:** Accuracy, Precision, Recall
-
-### 4. Fake News Detection
-- **Dataset:** Fake and Real News Dataset (Kaggle)
-- **Objective:** Classify whether a news article is real or fake.
-- **Preprocessing:** Stopword removal, lemmatization
-- **Vectorization:** TF-IDF
-- **Model:** Logistic Regression / SVM
-- **Evaluation:** Accuracy, F1 Score
+This project is part of an NLP internship task. It classifies news articles as **real or fake** using machine learning and text preprocessing techniques.
 
 ---
 
-## 🛠️ Tools & Libraries
+## 📂 Dataset
 
-- Python 3
-- pandas, numpy
-- scikit-learn
-- NLTK / spaCy
-- HuggingFace Transformers
-- Jupyter Notebook
+- Source: [Fake and Real News Dataset on Kaggle](https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset)
+- Files used: `True.csv`, `Fake.csv`
 
 ---
+
+## 🧠 Task Overview
+
+- Combine `True.csv` and `Fake.csv` into a single dataset
+- Preprocess the `title` and `text` columns:
+  - Lowercase
+  - Remove punctuation and stopwords
+  - Lemmatize tokens
+- Convert text to numerical features using **TF-IDF**
+- Train a **Logistic Regression** or **SVM** model
+- Evaluate using:
+  - **Accuracy**
+  - **F1-score**
+  - **Classification report**
+
+---
+
+## 🧰 Tools & Libraries
+
+- Python 3.x
+- `pandas`, `numpy`
+- `nltk`, `spaCy`
+- `scikit-learn`
+- `matplotlib`, `seaborn`
+
+---
+
+## 🗂️ Folder Structure
+
+fake-news-detection/
+├── data/ # Contains True.csv and Fake.csv
+├── scripts/ # Contains main.py
+├── notebook/ # Contains final Jupyter notebook
+├── nlp_env/ # Python virtual environment
+├── requirements.txt # Dependencies
+└── README.md
+
+yaml
+Copy code
+
+---
+
+## ▶️ How to Run
+
+1. **Activate virtual environment**:
+
+    ```bash
+    .\nlp_env\Scripts\activate
+    ```
+
+2. **Run the main script**:
+
+    ```bash
+    python scripts/main.py
+    ```
+
+---
+
+## ✅ Results
+
+- **TF-IDF feature size**: 5000
+- **Train samples**: 35,918  
+- **Test samples**: 8,980  
+- **Accuracy**: ~98.88%
+
+---
+
 ## 📌 Notes
 
-- Each task is self-contained with its own scripts and notebooks.
-- Notebooks include preprocessing, modeling, evaluation, and explanation steps.
-- All models were trained and tested locally using open-source datasets.
+- The notebook version is available in the `notebook/` folder for easy experimentation and visualization.
+- Model performance may slightly vary depending on preprocessing choices.
 
 ---
-
-
-
