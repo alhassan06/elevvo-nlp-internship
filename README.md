@@ -1,58 +1,104 @@
-# 🧠 NLP Internship Projects – Elevvo
+# News Classification Task
 
-This repository contains the NLP tasks I completed during my Elevvo Internship. Each project tackles a different real-world NLP problem, using industry-relevant datasets and techniques in Python.
+This project performs **news article classification** using **TF-IDF vectorization and Logistic Regression** to predict the category of news articles based on their title and description.
 
----
-
-## ✅ Completed Tasks
-
-### 1. Question Answering with Transformers
-- **Dataset:** SQuAD v1.1 (via HuggingFace)
-- **Objective:** Build a system that extracts answers to questions from a given context.
-- **Tools:** HuggingFace Transformers (`bert-large-uncased-whole-word-masking-finetuned-squad`)
-- **Evaluation:** Exact Match (EM), F1 Score
-
-### 2. Sentiment Analysis on Product Reviews
-- **Dataset:** IMDb Reviews / Amazon Product Reviews (Kaggle)
-- **Objective:** Determine if a product review is positive or negative.
-- **Preprocessing:** Lowercasing, stopword removal
-- **Vectorization:** TF-IDF
-- **Model:** Logistic Regression
-- **Evaluation:** Accuracy, Confusion Matrix
-
-### 3. News Category Classification
-- **Dataset:** News Category Dataset (e.g., HuffPost or Kaggle)
-- **Objective:** Predict the category of a news article (e.g., tech, business, politics).
-- **Model:** Multiclass Logistic Regression
-- **Evaluation:** Accuracy, Precision, Recall
-
-### 4. Fake News Detection
-- **Dataset:** Fake and Real News Dataset (Kaggle)
-- **Objective:** Classify whether a news article is real or fake.
-- **Preprocessing:** Stopword removal, lemmatization
-- **Vectorization:** TF-IDF
-- **Model:** Logistic Regression / SVM
-- **Evaluation:** Accuracy, F1 Score
+It was developed as part of the **Elevvo Pathways NLP learning track** for practical machine learning training.
 
 ---
 
-## 🛠️ Tools & Libraries
+## 📂 Folder Structure
 
-- Python 3
-- pandas, numpy
+news-classification-task/
+├── data/
+│ └── train.csv
+├── models/
+│ ├── news_classifier_logreg.pkl
+│ └── tfidf_vectorizer.pkl
+├── notebooks/
+│ └── news_classification_task.ipynb
+├── scripts/
+│ └── news_classification_task.py 
+└── README.md
+
+
+yaml
+Copy code
+
+---
+
+## 🛠️ Requirements
+
+Ensure you have **Python 3.13.x** and the following packages installed in your environment:
+
+- pandas
+- numpy
+- matplotlib
+- seaborn
+- nltk
+- spacy
 - scikit-learn
-- NLTK / spaCy
-- HuggingFace Transformers
-- Jupyter Notebook
+- joblib
 
----
-## 📌 Notes
+If needed, install using:
+```bash
+pip install pandas numpy matplotlib seaborn nltk spacy scikit-learn joblib
+python -m spacy download en_core_web_sm
+🚀 How to Run
+1️⃣ Clone or download the repository to your local machine.
 
-- Each task is self-contained with its own scripts and notebooks.
-- Notebooks include preprocessing, modeling, evaluation, and explanation steps.
-- All models were trained and tested locally using open-source datasets.
+2️⃣ Ensure your train.csv is placed inside the data/ folder:
 
----
+bash
+Copy code
+news-classification-task/data/train.csv
+3️⃣ Activate your virtual environment:
 
+bash
+Copy code
+cd path\to\news-classification-task
+.\nlp_env\Scripts\activate
+4️⃣ Open the notebook in VS Code:
 
+Open notebooks/news_classification_task.ipynb.
 
+Ensure the kernel is set to nlp_env.
+
+Run all cells.
+
+5️⃣ The notebook will:
+✅ Preprocess your data (lowercasing, cleaning, lemmatization).
+✅ Vectorize text using TF-IDF.
+✅ Train Logistic Regression on your data.
+✅ Evaluate and print accuracy and classification report.
+✅ Display the confusion matrix.
+✅ Save the trained model and vectorizer for future use.
+
+📊 Results
+Using train.csv with your current workflow, you achieved:
+
+Accuracy: 89.6% on the test set.
+
+A clear confusion matrix showing the model's performance across the four news categories.
+
+💾 Outputs
+After running, the following will be saved automatically inside models/:
+
+news_classifier_logreg.pkl – your trained Logistic Regression model.
+
+tfidf_vectorizer.pkl – your trained TF-IDF vectorizer for reuse.
+
+You can use these for future inference without retraining.
+
+✅ Status
+✅ Project implemented, trained, evaluated, and working correctly in VS Code + Jupyter Notebook.
+✅ Folder organized for clarity and submission.
+✅ Ready for learning demonstration and future fine-tuning.
+
+🤝 Contribution
+This project is part of Elevvo Pathways NLP Track under your practical exercises. If you wish to extend it, consider:
+
+Trying different models (SVM, Random Forest, Naive Bayes).
+
+Hyperparameter tuning for higher accuracy.
+
+Testing on additional news data for robustness.
