@@ -5,7 +5,7 @@ from tqdm import tqdm
 from sklearn.metrics import f1_score
 import re
 
-# Function to load SQuAD v1.1 dev data
+
 def load_squad_data(filepath):
     with open(filepath, 'r', encoding='utf-8') as f:
         squad = json.load(f)
@@ -16,20 +16,20 @@ def load_squad_data(filepath):
             context = paragraph['context']
             for qa in paragraph['qas']:
                 question = qa['question']
-                if qa['answers']:  # Avoid questions with no answers
+                if qa['answers']:  
                     answer = qa['answers'][0]['text']
                     data.append({'context': context, 'question': question, 'answer': answer})
     return data
 
-# Simple EM scorer
+
 def exact_match_score(prediction, ground_truth):
     return int(normalize_text(prediction) == normalize_text(ground_truth))
 
-# Normalize for comparison (used in EM and F1)
+
 def normalize_text(s):
     return re.sub(r'\W+', ' ', s).strip().lower()
 
-# Token-level F1 scorer
+
 def f1(prediction, ground_truth):
     pred_tokens = normalize_text(prediction).split()
     gt_tokens = normalize_text(ground_truth).split()
@@ -40,7 +40,7 @@ def f1(prediction, ground_truth):
     recall = len(common) / len(gt_tokens)
     return 2 * (precision * recall) / (precision + recall)
 
-# Evaluation loop
+
 def evaluate(qa_pipeline, dataset, max_samples=100):
     exact_matches = []
     f1_scores = []
@@ -68,7 +68,7 @@ def evaluate(qa_pipeline, dataset, max_samples=100):
     print(f"Exact Match (EM): {sum(exact_matches)/len(exact_matches)*100:.2f}%")
     print(f"F1 Score: {sum(f1_scores)/len(f1_scores)*100:.2f}%")
 
-# Main execution
+
 if __name__ == "__main__":
     print("Loading model...")
     device = 0 if torch.cuda.is_available() else -1
